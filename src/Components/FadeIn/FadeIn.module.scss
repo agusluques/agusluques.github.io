@@ -1,0 +1,17 @@
+.fadeIn {
+  opacity: 0;
+  transform: translate(0, 50%);
+  visibility: hidden;
+  transition: opacity 2000ms ease-out, transform 2000ms ease-out;
+  will-change: opacity, visibility;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.is_visible {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}

@@ -1,0 +1,21 @@
+export const skills = [
+    {value: 1, label: '.NET Framework/Core', info: '4+ years of exp. My whole career.👶'},
+    {value: 2, label: 'React', info: '2+ years of exp. This page was made with React.⚛'},
+    {value: 3, label: 'Pyhton', info: '2+ years of exp. Used within my personal projects.🐍'},
+    {value: 4, label: 'Django', info: '2+ years of exp. Did my university final work with Django.🧑‍🏫'},
+    {value: 5, label: 'Flask', info: '1+ year of exp.😊'},
+    {value: 6, label: 'Django Rest Framework', info: '1+ year of exp. Love it.😍'},
+    {value: 7, label: 'Angular', info: '2+ years of exp. It\'s not my favourite.✋'},
+    {value: 8, label: 'Git / TFS', info: 'Since I started programming I\'ve been used git.🧑‍💻'},
+    {value: 9, label: 'Azure', info: '2+ years of exp. Want to certificate on Microsoft Azure on near future.🧑‍🎓'},
+    {value: 10, label: 'NodeJS', info: 'Used it for tiny APIs.🤟'},
+    {value: 11, label: 'MVC', info: 'Design patterns are my passion.🤓'},
+    {value: 12, label: 'Verical Slice Architecture', info: 'Interesting.🤔'},
+    {value: 13, label: 'CQRS', info: 'Organized.👌'},
+    {value: 14, label: 'Unit testing', info: 'Won\'t lie, nobody like tests.🙈'},
+    {value: 15, label: 'Microservices', info: 'It\'s all about it.🤷‍♂️'},
+    {value: 16, label: 'SQL / NOSql', info: 'All kind of Sql and NoSql databases.😏'},
+    {value: 17, label: 'HTML / CSS', info: 'I\'m a fighter too.💪'},
+    {value: 18, label: 'OAuth', info: 'Kind of an expert.🙄'},
+    {value: 0, label: 'etc'}
+]

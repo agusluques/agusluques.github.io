@@ -1,0 +1,50 @@
+.mainscreen {
+  z-index: 1;
+  margin-top: 30vh;
+  margin-bottom: 10rem;
+}
+
+.title {
+  height: 300px;
+}
+
+.green {
+  color: rgb(104, 195, 163);
+}
+
+.Typewriter__wrapper,
+.Typewriter__cursor {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 60px;
+  margin-bottom: 16px;
+  color: rgb(82, 179, 217);
+}
+
+.Typewriter__cursor {
+  -webkit-animation: Typewriter-cursor 1s infinite;
+  animation: Typewriter-cursor 1s infinite;
+  margin-left: 1px;
+}
+@-webkit-keyframes Typewriter-cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes Typewriter-cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+

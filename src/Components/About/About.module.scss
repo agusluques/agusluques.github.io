@@ -1,0 +1,70 @@
+.title {
+  align-self: center;
+  margin-top: 2rem;
+}
+
+.about_me {
+  color: rgb(104, 195, 163);
+  text-align: start;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Courier New", Courier, monospace;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1000ms ease-in;
+  will-change: opacity, visibility;
+
+  &.is_visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+}
+
+.about_me_list {
+  list-style: none;
+  > li {
+    margin: 0 0 3rem 0;
+  }
+  > li::before {
+    content: "$";
+    position: relative;
+    left: -1rem;
+  }
+}
+
+.Typewriter__wrapper,
+.Typewriter__cursor {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 50px;
+  margin-bottom: 16px;
+  color: #52b3d9;
+}
+
+.Typewriter__cursor {
+  -webkit-animation: Typewriter-cursor 1s infinite;
+  animation: Typewriter-cursor 1s infinite;
+  margin-left: 1px;
+}
+@-webkit-keyframes Typewriter-cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes Typewriter-cursor {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
