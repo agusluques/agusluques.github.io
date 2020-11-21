@@ -22,7 +22,7 @@ const Fab = (props) => {
                     <img src={Me} className={styles.me_pic} alt="me" />
                 </button>
             </div>
-            <div className={styles.social_container} style={{ opacity: isOpen ? 1 : 0, visibility: isOpen ? 'visible' : 'hidden' }}>
+            <div className={styles.social_container} style={{ opacity: isOpen ? 1 : 0, display: isOpen ? '' : 'none'}}>
                 <a href="https://www.linkedin.com/in/agustin-luques/">
                     <FontAwesomeIcon icon={faLinkedin} className={styles.fa} title="LinkedIn" />
                 </a>

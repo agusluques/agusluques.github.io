@@ -17,7 +17,7 @@ const MainScreen = () => {
                     onInit={(typewritter) => {
                         typewritter
                             .typeString(`<span>I am <b class=${styles.green}>Agustin Luques</b></span>`)
-                            .pasteString('😁')
+                            .pasteString('🙋🏽‍♂️')
                             .pauseFor(500)
                             .deleteChars(15)
                             .typeString(`<span>a <b class=${styles.green}>Software Engineer</b></span>`)

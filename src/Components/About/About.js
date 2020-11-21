@@ -33,8 +33,8 @@ const About = (props) => {
             <section className={showText ? `${styles.about_me} ${styles.is_visible}` : styles.about_me}>
                 <ul className={styles.about_me_list}>
                     <li><u>software engineer</u> from <u>University of Buenos Aires</u>.</li>
-                    <li><u>.NET</u> fullstack developer with <u>+4 years</u> of experience.</li>
-                    <li>been working on my personal projects for <u>+2 years</u> with <u>Python</u>.</li>
+                    <li><u>.NET fullstack</u> developer with <u>+4 years</u> of experience.</li>
+                    <li>working on my personal projects for <u>+2 years</u> with <u>Python</u>.</li>
                     <li><u>quick learner</u> and <u>hard worker</u>.</li>
                     <li>passionate about <u>technology</u> and <u>learning</u> new things.</li>
                 </ul>
