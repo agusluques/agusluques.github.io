@@ -17,7 +17,7 @@ const Search = () => {
             <Select
                 menuPlacement="top"
                 options={skills.slice(0, -1)}
-                placeholder="Better search..."
+                placeholder="More info..."
                 className={styles.search}
                 onChange={(e) => setValue(e ? e.value : 0)}
             />

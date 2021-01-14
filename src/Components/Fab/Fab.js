@@ -17,7 +17,7 @@ const Fab = (props) => {
             className={styles.fab_container}
             onMouseLeave={close}
         >
-            <div className={`${styles.fab} ${isOpen ? styles.open : ''}`} onMouseEnter={open} onClick={open}>
+            <div className={`${styles.fab} ${isOpen ? styles.open : styles.heartbeat}`} onMouseEnter={open} onClick={open}>
                 <button type="button" className={styles.fab_main}>
                     <img src={Me} className={styles.me_pic} alt="me" />
                 </button>

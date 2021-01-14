@@ -30,7 +30,8 @@
   z-index: 1000;
   border: none;
   border-radius: 50%;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5), 0 4px 8px rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+    0 4px 8px rgba(255, 255, 255, 0.28);
   cursor: pointer;
   padding: 0;
   > * {
@@ -39,7 +40,8 @@
 }
 
 .social_container {
-  box-shadow: rgba(255, 255, 255, 0.25) 0px 14px 28px, rgba(255, 255, 255, 0.22) 0px 10px 10px;
+  box-shadow: rgba(255, 255, 255, 0.25) 0px 14px 28px,
+    rgba(255, 255, 255, 0.22) 0px 10px 10px;
   border-radius: 1rem;
   transition: all 0.5s ease-in;
   width: 90%;
@@ -49,18 +51,16 @@
 }
 
 @media (min-width: 500px) {
-    .social_container {
-        width: 300px;
-    }
+  .social_container {
+    width: 300px;
+  }
 }
-
 
 .me_pic {
   height: 100%;
   width: 100%;
   border-radius: 50%;
 }
-
 
 a,
 a:visited,
@@ -87,3 +87,27 @@ a:active {
   color: white;
 }
 
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heartbeat {
+  animation: heartbeat 2s infinite;
+}
