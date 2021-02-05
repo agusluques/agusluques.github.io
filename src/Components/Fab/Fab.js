@@ -30,16 +30,16 @@ const Fab = (props) => {
                     <FontAwesomeIcon icon={faGithub} className={styles.fa} title="Github" />
                 </a>
                 <a href="mailto:luquesagustin@gmail.com">
-                    <FontAwesomeIcon icon={faEnvelope} className={styles.fa} title="Mail" />
+                    <FontAwesomeIcon icon={faEnvelope} className={styles.fa} title="Email me" />
                 </a>
                 <a href="https://www.instagram.com/aguusluques/">
                     <FontAwesomeIcon icon={faInstagram} className={styles.fa} title="Instagram" />
                 </a>
                 <a href="https://twitter.com/aguusluques">
-                    <FontAwesomeIcon icon={faTwitter} className={styles.fa} title="Instagram" />
+                    <FontAwesomeIcon icon={faTwitter} className={styles.fa} title="Twitter" />
                 </a>
                 <a href="/cv/CV-AgustinLuques(English).pdf" download>
-                    <FontAwesomeIcon icon={faFilePdf} className={styles.fa} title="CV english" />
+                    <FontAwesomeIcon icon={faFilePdf} className={styles.fa} title="Download CV" />
                 </a>
 
             </div>
