@@ -1,6 +1,6 @@
 import React from 'react';
 import Typewriter from 'typewriter-effect';
-import MouseIcon from '../../Components/MouseIcon/MouseIcon';
+// import MouseIcon from '../../Components/MouseIcon/MouseIcon';
 import styles from './MainScreen.module.scss';
 
 const MainScreen = () => {
@@ -27,7 +27,7 @@ const MainScreen = () => {
                     }}
                 />
             </section>
-            <MouseIcon />
+            {/* <MouseIcon /> */}
         </section>
     )
 };

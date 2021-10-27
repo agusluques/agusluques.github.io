@@ -1,7 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import Fab from './Components/Fab/Fab';
 import MainScreen from './Containers/MainScreen/MainScreen';
-import Profile from './Components/Profile/Profile';
+// import Profile from './Components/Profile/Profile';
 import styles from './App.module.scss';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <div className={styles.App}>
         <MainScreen />
-        <Profile />
+        {/* <Profile /> */}
         <Fab />
       </div>
     </BrowserRouter>
