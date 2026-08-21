@@ -1,24 +1,205 @@
-.App {
-  text-align: center;
-  background: url("./assets//images/background.jpg") no-repeat center center;
-  -webkit-background-attachment: fixed;
-  background-attachment: fixed;
-  background-color: #222;
-  background-size: cover;
-	padding: 0;
-	position: relative;
+.page {
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  background:
+    radial-gradient(120% 60% at 50% 0%, #16261d 0%, transparent 60%),
+    var(--bg);
 }
 
-.App::before {
-  content: "";
-  background-color: rgba(26, 30, 35, 0.932);
-  position: absolute;
-  top: 0;
-  left: 0;
+// Three tracks keep the fixture centred on the page while the tools sit hard
+// right. The outer tracks must be plain `1fr`, never `minmax(0, 1fr)`: a 1fr
+// track floors at its min-content width, so the track holding the language
+// picker can never collapse and let the picker ride back over the fixture.
+.scoreboard {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.match {
+  grid-column: 2;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
+
+.tools {
+  grid-column: 3;
+  justify-self: end;
+  flex: 0 0 auto;
+}
+
+.venue {
+  color: var(--ink-3);
+}
+
+// The venue is flavour, not information. It is the first thing to go when the
+// language picker needs the room.
+@media (max-width: 34rem) {
+  // Must be scoped under .match. The `.match span` rule above is (0,1,1) and
+  // would out-rank a bare `.venue` (0,1,0), so the hide would never apply.
+  .match .venue {
+    display: none;
+  }
+}
+
+.kitBoca,
+.kitRiver {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 2px;
+}
+
+.kitBoca {
+  background: linear-gradient(#14428f 33%, #f2c300 33% 66%, #14428f 66%);
+}
+
+.kitRiver {
+  background: linear-gradient(115deg, #f2f5f2 38%, #d4132a 38% 62%, #f2f5f2 62%);
+}
+
+.main {
+  flex: 1 1 auto;
   width: 100%;
-  height: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+
+.title {
+  font-size: clamp(2.1rem, 9vw, 3.6rem);
+  font-weight: 900;
+  margin: 0;
+
+  em {
+    font-style: normal;
+    color: var(--gold);
+  }
+}
+
+.lede {
+  max-width: 34em;
+  color: var(--ink-2);
+  margin: 0 0 0.4rem;
+
+  // Lift the key phrases out of the muted running text. Weight and brightness
+  // rather than more gold, which the title already owns.
+  em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+}
+
+.skip {
+  align-self: center;
+  margin-top: 0.2rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink-3);
+  font-size: 0.82rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--gold);
+  }
+}
+
+.locked {
+  display: none;
+}
+
+.unlocked {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  scroll-margin-top: 2rem;
+  animation: reveal 0.6s ease-out both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stamp {
+  align-self: flex-start;
+  // Not the pixel font: Press Start 2P has no accented glyphs, and the
+  // Spanish and Portuguese versions of this string need them.
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  background: var(--gold);
+  border-radius: 4px;
+  padding: 0.45rem 0.6rem;
+  margin: 0;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 1.6rem 1.25rem 2.4rem;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 0.8rem;
+
+  p {
+    margin: 0.2rem 0;
+  }
+}
+
+@media (min-width: 46rem) {
+  .main {
+    padding-top: 4rem;
+    gap: 4.5rem;
+  }
 }

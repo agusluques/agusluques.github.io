@@ -1,0 +1,14 @@
+// Covers the viewport, never the pointer. Sits above the page but below any
+// future modal layer.
+.confetti {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 60;
+  // Its own compositor layer, so repainting confetti never forces the page
+  // underneath to repaint while it is scrolling.
+  transform: translateZ(0);
+  contain: strict;
+}

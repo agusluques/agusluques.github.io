@@ -1,0 +1,210 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 160 / 104;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0a1a14;
+  box-shadow: var(--shadow);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+// Six tap targets over the goal mouth: three columns, two rows.
+// The goal interior sits at 20%..80% across and 13.5%..48% down. The rows run a
+// little past the goal line so the low corners stay thumb-sized on a phone.
+.zones {
+  position: absolute;
+  top: 11%;
+  right: 19%;
+  bottom: 46%;
+  left: 19%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.zone {
+  position: relative;
+  min-height: 40px;
+  padding: 0;
+  border: 1px dashed rgba(242, 195, 0, 0.35);
+  border-radius: 4px;
+  background: rgba(242, 195, 0, 0.05);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+
+  // A crosshair so it reads as a target, not just an empty box.
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 5px;
+    height: 5px;
+    margin: -2.5px 0 0 -2.5px;
+    background: rgba(242, 195, 0, 0.55);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    background: rgba(242, 195, 0, 0.22);
+    border-color: rgba(242, 195, 0, 0.95);
+
+    &::after {
+      background: #fff;
+      transform: scale(1.6);
+    }
+  }
+
+  &:active:not(:disabled) {
+    background: rgba(242, 195, 0, 0.38);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.15;
+  }
+}
+
+.zoneLabel {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.verdict {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  pointer-events: none;
+  font-family: var(--pixel);
+  font-size: clamp(1rem, 4.5vw, 1.9rem);
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.5);
+  animation: pop 0.3s cubic-bezier(0.2, 1.5, 0.4, 1);
+}
+
+.goal {
+  color: var(--gold);
+}
+
+.save {
+  color: var(--river-red);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.attempt {
+  margin: 0;
+
+  b {
+    color: var(--gold);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.pips {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pip,
+.pipOn {
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+}
+
+.pipOn {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+// Shown once two attempts are gone. The slot keeps its height either way, so
+// the page does not jump when the message appears.
+.lastCall,
+.lastCallHidden {
+  margin: -0.2rem 0 0;
+  min-height: 1.3em;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+}
+
+.lastCall {
+  color: var(--gold);
+  animation: lastCallIn 0.35s ease-out both, lastCallPulse 1.8s ease-in-out 0.35s infinite;
+}
+
+.lastCallHidden {
+  visibility: hidden;
+}
+
+@keyframes lastCallIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lastCallPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}

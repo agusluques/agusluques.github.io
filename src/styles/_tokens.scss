@@ -1,0 +1,35 @@
+// Design tokens. Stadium at night: dark green-biased neutrals, Boca gold as the
+// single accent, team colours reserved for the kits and the crowd.
+
+:root {
+  --bg:        #0b1310;
+  --bg-2:      #0e1a15;
+  --surface:   #121d18;
+  --surface-2: #18271f;
+  --line:      #26372e;
+
+  --ink:       #e9efe8;
+  --ink-2:     #93a395;
+  --ink-3:     #66766a;
+
+  --gold:      #f2c300;
+  --gold-dim:  #c9a200;
+  --gold-ink:  #1a1400;
+
+  --boca-blue: #14428f;
+  --river-red: #ff4256;
+  --pitch:     #2f8b4b;
+
+  --display: 'Archivo', 'Arial Black', Impact, sans-serif;
+  --body: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --pixel: 'Press Start 2P', var(--mono);
+
+  --radius: 12px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+
+  --page: 60rem;
+}
+
+// The site commits to one visual world on purpose: a floodlit pitch at night.
+// Every colour is painted explicitly, so it holds on any host background.

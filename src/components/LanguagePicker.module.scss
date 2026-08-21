@@ -1,0 +1,86 @@
+.picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.5rem 0.28rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink-2);
+  transition: border-color 0.15s ease, color 0.15s ease;
+  // Nothing inside is meant to be selected as text.
+  user-select: none;
+  -webkit-user-select: none;
+  // No grey flash when a thumb lands on it.
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover,
+  &:focus-within {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  // The focus ring belongs on the whole pill. Chrome treats a <select> as
+  // focus-visible even after a mouse or touch click, so a ring on the control
+  // itself would sit around the two letters and stay there after choosing.
+  &:has(.select:focus-visible) {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+}
+
+.globe {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+}
+
+// What the reader actually sees. The real control is invisible on top of it.
+.value {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  padding: 0 0.1rem;
+}
+
+.caret {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 auto;
+}
+
+// Stretched over the whole pill, so every part of it is live. The negative
+// inset pushes the tap target past 44px in both directions without making the
+// header any taller.
+.select {
+  position: absolute;
+  inset: -11px -8px;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  opacity: 0;
+  cursor: pointer;
+  // 16px stops iOS from zooming the page when the control takes focus.
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+
+  // The popup is drawn by the operating system, so the options need colours
+  // that work on their own.
+  option {
+    background: #121d18;
+    color: #e9efe8;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}

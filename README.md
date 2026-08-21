@@ -1,74 +1,73 @@
 # agusluques.github.io
-[![HitCount](http://hits.dwyl.io/agusluques/agusluques.github.io.svg)](http://hits.dwyl.io/agusluques/agusluques.github.io)
 
+My portfolio landing page. To read it, you must score a penalty against River.
 
-# Getting Started with Create React App
+Live at [agusluques.github.io](https://agusluques.github.io/).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Run it
 
-## Available Scripts
+```bash
+nvm use          # Node 22
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # writes dist/
+npm run preview  # serve the built site
+```
 
-In the project directory, you can run:
+GitHub Actions builds `main` and publishes `dist/` to the `gh-pages` branch.
+The site is fully static.
 
-### `npm start`
+## The game
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Boca Juniors takes the penalty, River Plate keeps. Pick one of six corners and
+shoot. The keeper is hard to beat on the first two attempts and always dives the
+wrong way on the third, so nobody is locked out of the content.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Attempt | Chance the keeper saves |
+| ------- | ----------------------- |
+| 1       | 85%                     |
+| 2       | 75%                     |
+| 3       | 0% — always a goal       |
 
-### `npm test`
+A "Skip the game" link is always available, and `noscript` visitors get the
+links directly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How it is drawn
 
-### `npm run build`
+The game renders to a 160&times;104 canvas that the browser scales up with hard
+edges. Physics runs in floating point, but every coordinate is rounded to a
+whole pixel before it reaches the canvas, so the upscaled image never blurs.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Three details keep it honest to the 16-bit era it borrows from:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Distance is four ball sprite sizes, not a scale transform.
+- Spin is two alternating frames, not a rotation.
+- The dive is a separate hand-drawn pose, mirrored for the other side.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+There are no image assets. Every sprite is a grid of characters in
+`src/game/sprites.js`, mapped to colours by a palette.
 
-### `npm run eject`
+### Layout
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+src/
+  game/
+    constants.js   pitch geometry, targets, timing, difficulty
+    sprites.js     character-grid sprites and the palette
+    engine.js      state machine and physics — no React, no canvas
+    renderer.js    draws one frame from engine state
+  components/
+    PenaltyGame.jsx  canvas, fixed-timestep loop, tap targets
+    Profile.jsx      the content the goal unlocks
+  data/profile.js    all copy, skills and links in one place
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The engine is a plain object with `shoot`, `update` and `reset`. It knows
+nothing about React or about drawing, so the rules can be tested on their own.
+The loop uses a fixed timestep, so a 120 Hz screen does not run the game at
+double speed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Previous version
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The original Create React App site is kept unchanged in [`backup/`](backup/).
+Nothing was deleted.
